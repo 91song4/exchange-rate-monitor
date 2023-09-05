@@ -6,9 +6,10 @@ import { Cron } from '@nestjs/schedule';
 export class ExchangeRateController {
   constructor(private readonly exchangeRateService: ExchangeRateService) {}
 
-  @Cron('0/10 * * * * *')
+  @Cron('0 0 */1 * * *', { disabled: false })
   async mySchedule() {
     this.exchangeRateService.mySchedule();
+    return;
   }
 
   @Get()
