@@ -3,7 +3,7 @@ import { SlackMessageController } from './slack-message.controller';
 import { SlackMessageService } from './slack-message.service';
 import { SlackModule } from 'nestjs-slack';
 import { SlackConfig } from 'nestjs-slack/dist/types';
-import { ConfigModule, ConfigService } from '@nestjs/config';
+import { ConfigService } from '@nestjs/config';
 
 @Module({
   imports: [
@@ -20,5 +20,6 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
   ],
   controllers: [SlackMessageController],
   providers: [SlackMessageService],
+  exports: [SlackMessageService],
 })
 export class SlackMessageModule {}

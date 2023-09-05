@@ -1,8 +1,20 @@
 import { Injectable } from '@nestjs/common';
 import axios from 'axios';
+import { SendMessageDTO } from 'src/slack-message/dto/send-message.dto';
+import { SlackMessageService } from 'src/slack-message/slack-message.service';
 
 @Injectable()
 export class ExchangeRateService {
+  constructor(private readonly slackMessageService: SlackMessageService) {}
+
+  async mySchedule() {
+    const sendMessageDTO: SendMessageDTO = {
+      text: 'coco',
+    };
+    await this.slackMessageService.sendMessage(sendMessageDTO);
+    console.log(Date());
+  }
+
   async getExchangeRate() {
     const authkey: string = process.env.KOREAEXIM_KEY;
 
